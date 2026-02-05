@@ -14,9 +14,7 @@ jobs:
   update-manifest:
     runs-on: ubuntu-latest
     
-    defaults:
-      run:
-        working-directory: dictionaries
+
 
     steps:
       - name: Checkout
