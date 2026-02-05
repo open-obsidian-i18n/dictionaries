@@ -2,6 +2,7 @@
 name: Update Manifest
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main  # 假设主分支是 main，如果是 l10n_main 请修改
