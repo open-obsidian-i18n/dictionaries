@@ -1,0 +1,22 @@
+{
+  "lastUpdated": "2026-02-05T15:42:01.175Z",
+  "contributors": [],
+  "plugins": [
+    {
+      "locale": "en",
+      "dictVersion": "1.0.0",
+      "progress": 100,
+      "downloadUrl": "https://raw.githubusercontent.com/open-obsidian-i18n/dictionaries/main/plugins/dataview/dataview_en.json",
+      "pluginId": "dataview"
+    }
+  ],
+  "themes": [
+    {
+      "locale": "en",
+      "dictVersion": "1770218638890",
+      "progress": 100,
+      "downloadUrl": "https://raw.githubusercontent.com/open-obsidian-i18n/dictionaries/main/themes/Blue Topaz/Blue Topaz_en.json",
+      "themeName": "Blue Topaz"
+    }
+  ]
+}
