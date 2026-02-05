@@ -1,0 +1,44 @@
+
+name: Update Manifest
+
+on:
+  push:
+    branches:
+      - main  # 假设主分支是 main，如果是 l10n_main 请修改
+    paths:
+      - 'dictionaries/plugins/**'
+      - 'dictionaries/themes/**'
+      - 'dictionaries/scripts/**'
+
+jobs:
+  update-manifest:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: dictionaries
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate Manifest
+        run: node scripts/generate-manifest.js
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add manifest.json
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update manifest.json [skip ci]"
+            git push
+          fi
