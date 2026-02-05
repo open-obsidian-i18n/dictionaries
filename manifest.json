@@ -1,12 +1,19 @@
 {
-  "lastUpdated": "2026-02-05T15:42:01.175Z",
+  "lastUpdated": "2026-02-05T16:45:43.124Z",
   "contributors": [],
   "plugins": [
     {
       "locale": "en",
-      "dictVersion": "1.0.0",
+      "dictVersion": "1770304403150",
       "progress": 100,
       "downloadUrl": "https://raw.githubusercontent.com/open-obsidian-i18n/dictionaries/main/plugins/dataview/dataview_en.json",
+      "pluginId": "dataview"
+    },
+    {
+      "locale": "zh",
+      "dictVersion": "1770304403150",
+      "progress": 100,
+      "downloadUrl": "https://raw.githubusercontent.com/open-obsidian-i18n/dictionaries/main/plugins/dataview/dataview_en_zh.json",
       "pluginId": "dataview"
     }
   ],
@@ -15,7 +22,14 @@
       "locale": "en",
       "dictVersion": "1770218638890",
       "progress": 100,
-      "downloadUrl": "https://raw.githubusercontent.com/open-obsidian-i18n/dictionaries/main/themes/Blue Topaz/Blue Topaz_en.json",
+      "downloadUrl": "https://raw.githubusercontent.com/open-obsidian-i18n/dictionaries/main/themes/Blue%20Topaz/Blue%20Topaz_en.json",
+      "themeName": "Blue Topaz"
+    },
+    {
+      "locale": "zh",
+      "dictVersion": "1770218638890",
+      "progress": 100,
+      "downloadUrl": "https://raw.githubusercontent.com/open-obsidian-i18n/dictionaries/main/themes/Blue%20Topaz/Blue%20Topaz_en_zh.json",
       "themeName": "Blue Topaz"
     }
   ]
