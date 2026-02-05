@@ -6,9 +6,9 @@ on:
     branches:
       - main  # 假设主分支是 main，如果是 l10n_main 请修改
     paths:
-      - 'dictionaries/plugins/**'
-      - 'dictionaries/themes/**'
-      - 'dictionaries/scripts/**'
+      - 'plugins/**'
+      - 'themes/**'
+      - 'scripts/**'
 
 jobs:
   update-manifest:
