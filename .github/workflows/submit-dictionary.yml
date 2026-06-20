@@ -1,0 +1,83 @@
+name: Submit Dictionary
+on:
+  workflow_call:
+    inputs:
+      plugin-id:
+        required: true
+        type: string
+        description: "Obsidian plugin ID (e.g., obsidian-tasks-plugin)"
+      plugin-version:
+        required: true
+        type: string
+        description: "Plugin version string (from manifest.json)"
+      artifact-name:
+        required: true
+        type: string
+        description: "Name of the uploaded artifact containing en.json"
+    secrets:
+      token:
+        required: true
+        description: "GitHub token with write access to the dictionaries repo (classic PAT or fine-grained)"
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dictionaries repo
+        uses: actions/checkout@v4
+        with:
+          repository: open-obsidian-i18n/dictionaries
+          token: ${{ secrets.token }}
+          ref: main
+
+      - name: Download dictionary artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: ./tmp-dict/
+
+      - name: Validate and copy dictionary
+        run: |
+          set -e
+          if [ ! -f ./tmp-dict/en.json ]; then
+            echo "ERROR: en.json not found in artifact"
+            exit 1
+          fi
+
+          # Validate JSON
+          node -e "JSON.parse(require('fs').readFileSync('./tmp-dict/en.json','utf8'))"
+          echo "JSON valid"
+
+          # Validate $meta exists
+          META=$(node -e "const d=JSON.parse(require('fs').readFileSync('./tmp-dict/en.json','utf8')); console.log(JSON.stringify(d.\$meta||{}))")
+          echo "Meta: $META"
+
+          # Copy to correct location
+          PLUGIN_DIR="plugins/${{ inputs.plugin-id }}"
+          mkdir -p "$PLUGIN_DIR"
+          cp ./tmp-dict/en.json "$PLUGIN_DIR/${{ inputs.plugin-id }}_en.json"
+          echo "Copied to $PLUGIN_DIR/${{ inputs.plugin-id }}_en.json"
+
+      - name: Regenerate manifest
+        run: node scripts/generate-manifest.js
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.token }}
+          commit-message: |
+            feat(${{ inputs.plugin-id }}): update en dictionary v${{ inputs.plugin-version }}
+          title: |
+            Update ${{ inputs.plugin-id }} English dictionary v${{ inputs.plugin-version }}
+          body: |
+            Automated submission from plugin release v${{ inputs.plugin-version }}.
+
+            - Plugin: `${{ inputs.plugin-id }}`
+            - Version: ${{ inputs.plugin-version }}
+            - Dictionary: `plugins/${{ inputs.plugin-id }}/${{ inputs.plugin-id }}_en.json`
+
+            After merging, Crowdin will automatically pick up the new source file
+            and translators can begin working on updated/localized dictionaries.
+          branch: dict-${{ inputs.plugin-id }}-${{ inputs.plugin-version }}
+          delete-branch: true
+          labels: automated-dict
