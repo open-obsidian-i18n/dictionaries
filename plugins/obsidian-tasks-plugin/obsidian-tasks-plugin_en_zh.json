@@ -4,7 +4,7 @@
     "pluginVersion": "8.2.1",
     "dictVersion": "1781970165116",
     "locale": "zh",
-    "description": "为英语导出的内置字典"
+    "description": "中文词典"
   },
   "main.loadingPlugin": "加载插件: {{name}} v{{version}}",
   "main.unloadingPlugin": "卸载插件: {{name}} v{{version}}",
