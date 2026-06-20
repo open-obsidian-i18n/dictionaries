@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-20T15:38:54.488Z",
+  "lastUpdated": "2026-06-20T15:43:22.540Z",
   "contributors": [],
   "plugins": [
     {
@@ -15,6 +15,13 @@
       "progress": 100,
       "downloadUrl": "https://raw.githubusercontent.com/open-obsidian-i18n/dictionaries/main/plugins/dataview/dataview_en_zh.json",
       "pluginId": "dataview"
+    },
+    {
+      "locale": "en",
+      "dictVersion": "1781970165116",
+      "progress": 100,
+      "downloadUrl": "https://raw.githubusercontent.com/open-obsidian-i18n/dictionaries/main/plugins/obsidian-tasks-plugin/obsidian-tasks-plugin_en.json",
+      "pluginId": "obsidian-tasks-plugin"
     }
   ],
   "themes": [
