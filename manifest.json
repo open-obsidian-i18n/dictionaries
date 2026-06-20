@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-20T15:43:38.981Z",
+  "lastUpdated": "2026-06-20T16:42:37.297Z",
   "contributors": [],
   "plugins": [
     {
@@ -21,6 +21,13 @@
       "dictVersion": "1781970165116",
       "progress": 100,
       "downloadUrl": "https://raw.githubusercontent.com/open-obsidian-i18n/dictionaries/main/plugins/obsidian-tasks-plugin/obsidian-tasks-plugin_en.json",
+      "pluginId": "obsidian-tasks-plugin"
+    },
+    {
+      "locale": "zh",
+      "dictVersion": "1781970165116",
+      "progress": 100,
+      "downloadUrl": "https://raw.githubusercontent.com/open-obsidian-i18n/dictionaries/main/plugins/obsidian-tasks-plugin/obsidian-tasks-plugin_en_zh.json",
       "pluginId": "obsidian-tasks-plugin"
     }
   ],
